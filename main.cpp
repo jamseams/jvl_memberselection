@@ -26,14 +26,16 @@ class Cart
     std::vector<Potato>         potatoBasket;
 
 	template<typename T>
-	inline std::vector<T>& getBasket();
+	inline auto& getBasket()
+	{
+		if constexpr(std::is_same_v<T, Apple>)       {return appleBasket; }
+		else if constexpr(std::is_same_v<T, Pear>)   {return pearBasket;  }
+		else if constexpr(std::is_same_v<T, Tomato>) {return tomatoBasket;}
+		else if constexpr(std::is_same_v<T, Potato>) {return potatoBasket;}
+	}
 
 };
 
-template<typename T> std::vector<T>& Cart::getBasket() { return appleBasket; }
-template<> std::vector<Pear>& Cart::getBasket() { return pearBasket;}
-template<> std::vector<Tomato>& Cart::getBasket(){ return tomatoBasket; }
-template<> std::vector<Potato>& Cart::getBasket(){	return potatoBasket; }
 
 
 int main()
