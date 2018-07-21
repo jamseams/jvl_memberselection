@@ -11,8 +11,13 @@ class Cart
 {
     public:
     
-    Cart() : appleBasket(10), pearBasket(10), tomatoBasket(10), potatoBasket(10) { }
-    
+	void printSizes()
+	{
+		std::cout << "Size of AppleBasket  << " << appleBasket.size() << std::endl;
+		std::cout << "Size of PearBasket   << " << pearBasket.size() << std::endl;
+		std::cout << "Size of TomatoBasket << " << tomatoBasket.size() << std::endl;
+		std::cout << "Size of PotatoBasket << " << potatoBasket.size() << std::endl;
+	}
 
 	template<typename T>
 	void addToCart(T item){
@@ -44,10 +49,14 @@ int main()
     Cart   cart;
     Apple  apple;
     Tomato tomato;
+	Potato potato;
     
     cart.addToCart(tomato);
     cart.addToCart(apple);
     cart.addToCart(apple);
     cart.addToCart(tomato);
+	cart.addToCart(potato);
+	
+	cart.printSizes();
     return 0;
 }
